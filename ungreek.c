@@ -9,8 +9,7 @@
 static void help(char *name) {
   fprintf(stderr, "usage: %s [-h] [file ...]\n", basename(name));
   fputs("expand Greeek letters to Latin names\n", stderr);
-  fputs("-h      print this help and exit\n", stderr);
-  exit(0);
+  exit(EXIT_SUCCESS);
 }
 
 /* Expand 0xCE 0x?? byte pairs if they encode Greek letters and return the last byte. */
@@ -107,18 +106,17 @@ int parse(FILE *stream) {
 
 /** Convert Greek letters in files (or <stdin> if len == 0). */
 void run(char **files, int len) {
-  for (int idx = 0; idx < len; idx++)
-  {
+  for (int idx = 0; idx < len; idx++) {
     FILE *in = fopen(files[idx], "rb");
 
     if (!in) {
       fprintf(stderr, "error opening file '%s': %s\n", files[idx], strerror(errno));
-      exit(EXIT_FAILURE);
+      abort();
     }
 
     if (parse(in) != 0) {
       fprintf(stderr, "error while reading file '%s': %s\n", files[idx], strerror(errno));
-      exit(EXIT_FAILURE);
+      abort();
     }
 
     fclose(in);
@@ -127,13 +125,13 @@ void run(char **files, int len) {
   if (len == 0) {
     if (parse(stdin) != 0) {
       fprintf(stderr, "error while reading from <stdin>: %s\n", strerror(errno));
-      exit(EXIT_FAILURE);
+      abort();
     }
   }
 
   if (errno) {
     fprintf(stderr, "unknown error: %s\n", strerror(errno));
-    exit(EXIT_FAILURE);
+    abort();
   }
 }
 
