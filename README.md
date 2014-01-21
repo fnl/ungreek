@@ -1,7 +1,7 @@
 ungreek
 =======
 
-`ungreek` is a simple C99 script to expand Greek letters in UTF-8 encoding to their Latin names.
+`ungreek` is a simple C99 script to expand Greek letters in **UTF-8** encoding to their Latin names.
 In addition, `uncode` is a Python 2.6+ and 3.0+ script to [normalize][NIH] non-ASCII characters to ASCII.
 Both scripts accept input from `<stdin>` or as file arguments and write to `<stdout>`.
 
