@@ -8,4 +8,8 @@ Both scripts accept input from `<stdin>` or as file arguments and write to `<std
 To compile `ungreek`, a C99 compiler has to be available; type `make` to compile using GNU Make.
 To use `uncode`, the PyPI `unidecode` package has to be installed (`pip install unidecode` or `easy_install unidecode`). 
 
+Example conversion of a input text file in UTF-8 format:
+
+	ungreek unicode.txt | uncode > ascii.txt
+
 [NIH]: http://lexsrv2.nlm.nih.gov/LexSysGroup/Projects/lvg/2011/docs/designDoc/UDF/unicode/unicodeToAscii.html
